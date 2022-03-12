@@ -11,7 +11,7 @@ source:
   data_parser_plugin: json
   urls:
     - public://import/gt_people/gt_people.data.json
-  item_selector: person
+  item_selector: people
   fields:
     -
       name: id
