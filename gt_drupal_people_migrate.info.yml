@@ -1,0 +1,12 @@
+name: 'GT People Migrate'
+description: Loading profile data from a local JSON file
+type: module
+package: GT
+core_version_requirement: ^9 || ^10
+
+# Dependencies
+dependencies:
+  - migrate
+  - migrate_plus
+  - migrate_tools
+  - node

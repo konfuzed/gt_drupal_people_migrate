@@ -1,0 +1,6 @@
+{
+  "name": "gtsciences/gt_people_migrate",
+  "description": "JSON Migration for people profile data",
+  "type": "drupal-custom-module",
+  "license": "GPL-2.0-or-later"
+}

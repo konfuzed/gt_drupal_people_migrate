@@ -1,0 +1,22 @@
+# A "migration group" is as the name suggests, a group of migrations.
+
+# The machine name of the group, to be referenced in individual migrations
+id: gt_people
+
+# A human-friendly label for the group.
+label: GT People profiles migrations
+
+# More information about the group.
+description: Custom profile data migrations via JSON
+
+# Short description of the type of source, e.g. "Drupal 6" or "WordPress".
+source_type: JSON file
+
+# As with the migration config (see migrate_plus.migration.node_program.yml),
+# we specify that this migration group depends on the c11n_migrate module.
+# Hence, when the c11n_migrate module is uninstalled, this migration group
+# will also be removed from the system.
+dependencies:
+  enforced:
+    module:
+      - gt_people_migrate

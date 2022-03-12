@@ -1,0 +1,201 @@
+id: gt_people_profiles
+label: GT People profile data JSON file migration
+migration_group: gt_people
+migration_tags:
+  - JSON
+  - Profiles
+  - People
+source:
+  plugin: url
+  data_fetcher_plugin: file
+  data_parser_plugin: json
+  urls:
+    - public://import/gt_people/gt_people.data.json
+  item_selector: person
+  fields:
+    -
+      name: id
+      selector: id
+    -
+      name: awards
+      selector: awards
+    -
+      name: bio_summary
+      selector: bio_summary
+    -
+      name: biography
+      selector: biography
+    -
+      name: bldg
+      selector: bldg
+    -
+      name: bldg_room
+      selector: bldg_room
+    -
+      name: bldg_url_map
+      selector: bldg_url_map
+    -
+      name: education
+      selector: education
+    -
+      name: email
+      selector: email
+    -
+      name: fax
+      selector: fax
+    -
+      name: gtaccount
+      selector: gtaccount
+    -
+      name: image
+      selector: image
+    -
+      name: image_local
+      selector: image_local
+    -
+      name: image_url
+      selector: image_url
+    -
+      name: name_display_html
+      selector: name_display_html
+    -
+      name: name_display_plain
+      selector: name_display_plain
+    -
+      name: name_first
+      selector: name_first
+    -
+      name: name_last
+      selector: name_last
+    -
+      name: phone
+      selector: phone
+    -
+      name: pronouns
+      selector: pronouns
+    -
+      name: publications
+      selector: publications
+    -
+      name: research_group
+      selector: research_group
+    -
+      name: research_group_url
+      selector: research_group_url
+    -
+      name: research_history
+      selector: research_history
+    -
+      name: research_keywords
+      selector: research_keywords
+    -
+      name: research_summary
+      selector: research_summary
+    -
+      name: roles
+      selector: roles
+    -
+      name: salutation
+      selector: salutation
+    -
+      name: title_custom
+      selector: title_custom
+    -
+      name: title_custom_html
+      selector: title_custom_html
+    -
+      name: title_custom_short
+      selector: title_custom_short
+    -
+      name: title_official
+      selector: title_official
+    -
+      name: url_cv_resume
+      selector: url_cv_resume
+    -
+      name: url_gscholar
+      selector: url_gscholar
+    -
+      name: url_orcid
+      selector: url_orcid
+    -
+      name: url_personal
+      selector: url_personal
+    -
+      name: url_publons
+      selector: url_publons
+    -
+      name: url_pubmed
+      selector: url_pubmed
+    -
+      name: url_researcherid
+      selector: url_researcherid
+    -
+      name: url_researchgate
+      selector: url_researchgate
+    -
+      name: url_scopus
+      selector: url_scopus
+  ids:
+    id:
+      type: integer
+process:
+  type:
+    plugin: default_value
+    default_value: gt_people
+  title:
+    plugin: concat
+    source:
+      - name_first
+      - name_last
+    delimiter: ' '
+  field_gtppl_awards: awards
+  field_gtppl_bio_summary: responsibilities
+  field_gtppl_biography:
+      plugin: concat
+      source:
+        - leadership_roles
+        - responsibilities
+      delimiter: '</p><p>'
+  field_gtppl_bldg_name_short: bldg
+  field_gtppl_bldg_room: room
+  field_gtppl_education: education
+  field_gtppl_email: email
+  field_gtppl_fax: fax
+  field_gtppl_gtaccount:
+    plugin: callback
+    callable: mb_strtolower
+    source: gtuid
+  field_gtppl_image_local: photo
+  field_gtppl_name_display_html:
+    plugin: concat
+    source:
+      - name_first
+      - name_last
+    delimiter: ' '
+  field_gtppl_name_display_plain:
+    plugin: concat
+    source:
+      - name_first
+      - name_last
+    delimiter: ' '
+  field_gtppl_name_first: name_first
+  field_gtppl_name_last: name_last
+  field_gtppl_phone: phone
+  field_gtppl_publications: publications
+  field_gtppl_research_group: research_group
+  field_gtppl_research_group_url: research_group_url
+  field_gtppl_research_history: research_interests
+  field_gtppl_research_keywords: research_keywords
+  field_gtppl_research_summary: research_area
+  field_gtppl_roles: roles
+  field_gtppl_title_custom: title
+  field_gtppl_title_custom_html: title
+  field_gtppl_title_custom_short: title
+  field_gtppl_url_gscholar: url_gscholar
+  field_gtppl_url_orcid: url_orcid
+  field_gtppl_url_pubmed: url_pubmed
+  field_gtppl_url_researcherid: url_researcherid
+destination:
+  plugin: entity:node
+migration_dependencies: {  }
