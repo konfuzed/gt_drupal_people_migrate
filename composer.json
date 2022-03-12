@@ -2,5 +2,23 @@
   "name": "gtsciences/gt_people_migrate",
   "description": "JSON Migration for people profile data",
   "type": "drupal-custom-module",
-  "license": "GPL-2.0-or-later"
+  "keywords": ["People", "JSON", "Migrate"],
+  "homepage": "https://github.com/konfuzed/gt_drupal_people_migrate",
+  "license": "GPL-2.0-or-later",
+  "authors": [
+    {
+      "name": "Michael Sheldon",
+      "homepage": "https://www.drupal.org/u/konfuzed",
+      "role": "Maintainer"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/konfuzed/gt_drupal_people_migrate/issues",
+    "source": "https://github.com/konfuzed/gt_drupal_people_migrate"
+  },
+  "require": {
+    "drupal/migrate": "^9.3",
+    "drupal/migrate_plus": "^5.2",
+    "drupal/migrate_tools": "^5.1"
+  }
 }
