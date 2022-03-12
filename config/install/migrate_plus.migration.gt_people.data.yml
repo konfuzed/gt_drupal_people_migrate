@@ -1,6 +1,6 @@
 id: gt_people_profiles
 label: GT People profile data JSON file migration
-migration_group: gt_people
+migration_group: gt_people_migration_group
 migration_tags:
   - JSON
   - Profiles
@@ -15,9 +15,11 @@ source:
   fields:
     -
       name: id
+      label: 'Import ID'
       selector: id
     -
       name: awards
+      label: 'Awards'
       selector: awards
     -
       name: bio_summary
@@ -156,7 +158,7 @@ process:
     source:
       - leadership_roles
       - responsibilities
-    delimiter: '</p><p>'
+    delimiter: ' '
   field_gtppl_bldg_name_short: bldg
   field_gtppl_bldg_room: room
   field_gtppl_education: education

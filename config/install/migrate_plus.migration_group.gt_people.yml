@@ -1,7 +1,7 @@
 # A "migration group" is as the name suggests, a group of migrations.
 
 # The machine name of the group, to be referenced in individual migrations
-id: gt_people
+id: gt_people_migration_group
 
 # A human-friendly label for the group.
 label: GT People profiles migrations
