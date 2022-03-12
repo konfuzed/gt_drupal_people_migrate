@@ -152,11 +152,11 @@ process:
   field_gtppl_awards: awards
   field_gtppl_bio_summary: responsibilities
   field_gtppl_biography:
-      plugin: concat
-      source:
-        - leadership_roles
-        - responsibilities
-      delimiter: '</p><p>'
+    plugin: concat
+    source:
+      - leadership_roles
+      - responsibilities
+    delimiter: '</p><p>'
   field_gtppl_bldg_name_short: bldg
   field_gtppl_bldg_room: room
   field_gtppl_education: education
