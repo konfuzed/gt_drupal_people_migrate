@@ -1,3 +1,5 @@
+# Set a UUID so it can be referenced later
+uuid: 89ac856d-e490-4551-8d40-2ae7ca134cb3
 id: gt_people_migration_group
 label: GT People profiles migrations
 description: Custom profile data migrations via JSON

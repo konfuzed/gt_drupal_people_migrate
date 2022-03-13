@@ -1,3 +1,4 @@
+uuid: 9a1e0c09-cec9-4872-89b8-4c31addc1f82
 id: gt_people_profiles
 label: GT People profile data JSON file migration
 migration_group: gt_people_migration_group
@@ -73,6 +74,9 @@ source:
       name: phone
       selector: phone
     -
+      name: photo
+      selector: photo
+    -
       name: profile_type
       selector: profile_type
     -
@@ -88,8 +92,8 @@ source:
       name: research_group_url
       selector: research_group_url
     -
-      name: research_history
-      selector: research_history
+      name: research_interests
+      selector: research_interests
     -
       name: research_keywords
       selector: research_keywords
@@ -171,7 +175,7 @@ process:
     plugin: callback
     callable: mb_strtolower
     source: gtuid
-  field_gtppl_image_local: photo
+  field_gtppl_image_url: photo
   field_gtppl_name_display_html:
     plugin: concat
     source:
