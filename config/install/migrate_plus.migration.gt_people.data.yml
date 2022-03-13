@@ -107,6 +107,9 @@ source:
       name: salutation
       selector: salutation
     -
+      name: title
+      selector: title
+    -
       name: title_custom
       selector: title_custom
     -
@@ -202,8 +205,8 @@ process:
   field_gtppl_research_summary: research_area
   field_gtppl_roles: profile_type
   field_gtppl_title_custom: title
-  field_gtppl_title_custom_html: title
-  field_gtppl_title_custom_short: title
+  field_gtppl_title_custom_html: ''
+  field_gtppl_title_custom_short: ''
   field_gtppl_url_gscholar: url_gscholar
   field_gtppl_url_orcid: url_orcid
   field_gtppl_url_pubmed: url_pubmed
