@@ -73,6 +73,9 @@ source:
       name: phone
       selector: phone
     -
+      name: profile_type
+      selector: profile_type
+    -
       name: pronouns
       selector: pronouns
     -
@@ -193,7 +196,7 @@ process:
   field_gtppl_research_history: research_interests
   field_gtppl_research_keywords: research_keywords
   field_gtppl_research_summary: research_area
-  field_gtppl_roles: roles
+  field_gtppl_roles: profile_type
   field_gtppl_title_custom: title
   field_gtppl_title_custom_html: title
   field_gtppl_title_custom_short: title
