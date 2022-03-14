@@ -14,139 +14,95 @@ source:
     - public://import/gt_people/gt_people.data.json
   item_selector: people
   fields:
-    -
-      name: id
-      label: 'Import ID'
+    - name: id
+      label: 'ID'
       selector: id
-    -
-      name: awards
+    - name: awards
       label: 'Awards'
       selector: awards
-    -
-      name: bio_summary
+    - name: bio_summary
       selector: bio_summary
-    -
-      name: biography
+    - name: biography
       selector: biography
-    -
-      name: bldg
+    - name: bldg
       selector: bldg
-    -
-      name: bldg_room
+    - name: bldg_room
       selector: bldg_room
-    -
-      name: bldg_url_map
+    - name: bldg_url_map
       selector: bldg_url_map
-    -
-      name: education
+    - name: education
       selector: education
-    -
-      name: email
+    - name: email
       selector: email
-    -
-      name: fax
+    - name: fax
       selector: fax
-    -
-      name: gtaccount
+    - name: gtaccount
       selector: gtaccount
-    -
-      name: image
+    - name: image
       selector: image
-    -
-      name: image_local
+    - name: image_local
       selector: image_local
-    -
-      name: image_url
+    - name: image_url
       selector: image_url
-    -
-      name: name_display_html
+    - name: name_display_html
       selector: name_display_html
-    -
-      name: name_display_plain
+    - name: name_display_plain
       selector: name_display_plain
-    -
-      name: name_first
+    - name: name_first
       selector: name_first
-    -
-      name: name_last
+    - name: name_last
       selector: name_last
-    -
-      name: phone
+    - name: phone
       selector: phone
-    -
-      name: photo
+    - name: photo
       selector: photo
-    -
-      name: profile_type
+    - name: profile_type
       selector: profile_type
-    -
-      name: pronouns
+    - name: pronouns
       selector: pronouns
-    -
-      name: publications
+    - name: publications
       selector: publications
-    -
-      name: research_group
+    - name: research_group
       selector: research_group
-    -
-      name: research_group_url
+    - name: research_group_url
       selector: research_group_url
-    -
-      name: research_interests
+    - name: research_interests
       selector: research_interests
-    -
-      name: research_keywords
+    - name: research_keywords
       selector: research_keywords
-    -
-      name: research_summary
+    - name: research_summary
       selector: research_summary
-    -
-      name: roles
+    - name: roles
       selector: roles
-    -
-      name: salutation
+    - name: salutation
       selector: salutation
-    -
-      name: title
+    - name: title
       selector: title
-    -
-      name: title_custom
+    - name: title_custom
       selector: title_custom
-    -
-      name: title_custom_html
+    - name: title_custom_html
       selector: title_custom_html
-    -
-      name: title_custom_short
+    - name: title_custom_short
       selector: title_custom_short
-    -
-      name: title_official
+    - name: title_official
       selector: title_official
-    -
-      name: url_cv_resume
+    - name: url_cv_resume
       selector: url_cv_resume
-    -
-      name: url_gscholar
+    - name: url_gscholar
       selector: url_gscholar
-    -
-      name: url_orcid
+    - name: url_orcid
       selector: url_orcid
-    -
-      name: url_personal
+    - name: url_personal
       selector: url_personal
-    -
-      name: url_publons
+    - name: url_publons
       selector: url_publons
-    -
-      name: url_pubmed
+    - name: url_pubmed
       selector: url_pubmed
-    -
-      name: url_researcherid
+    - name: url_researcherid
       selector: url_researcherid
-    -
-      name: url_researchgate
+    - name: url_researchgate
       selector: url_researchgate
-    -
-      name: url_scopus
+    - name: url_scopus
       selector: url_scopus
   ids:
     id:
@@ -161,14 +117,21 @@ process:
       - name_first
       - name_last
     delimiter: ' '
-  field_gtppl_awards: awards
+  field_gtppl_awards/value: awards
+  field_gtppl_awards/format:
+    plugin: default_value
+    default_value: gt_people_html
+
   field_gtppl_bio_summary: responsibilities
-  field_gtppl_biography:
+  field_gtppl_biography/value:
     plugin: concat
     source:
       - leadership_roles
       - responsibilities
     delimiter: ' '
+  field_gtppl_biography/format:
+    plugin: default_value
+    default_value: gt_people_html
   field_gtppl_bldg_name_short: bldg
   field_gtppl_bldg_room: room
   field_gtppl_education: education
@@ -178,13 +141,26 @@ process:
     plugin: callback
     callable: mb_strtolower
     source: gtuid
-  field_gtppl_image_url: photo
-  field_gtppl_name_display_html:
+  field_gtppl_image_local/target_id:
+    plugin: migration_lookup
+    migration: gt_people_images_file
+    source: photo
+  field_gtppl_image_local/alt:
     plugin: concat
     source:
       - name_first
       - name_last
     delimiter: ' '
+  field_gtppl_image_url: photo
+  field_gtppl_name_display_html/value:
+    plugin: concat
+    source:
+      - name_first
+      - name_last
+    delimiter: ' '
+  field_gtppl_name_display_html/format:
+    plugin: default_value
+    default_value: gt_people_html
   field_gtppl_name_display_plain:
     plugin: concat
     source:
@@ -200,12 +176,18 @@ process:
     default_value: gt_people_html
   field_gtppl_research_group: research_group
   field_gtppl_research_group_url: research_group_url
-  field_gtppl_research_history: research_interests
+  field_gtppl_research_history/value: research_interests
+  field_gtppl_research_history/format:
+    plugin: default_value
+    default_value: gt_people_html
   field_gtppl_research_keywords: research_keywords
   field_gtppl_research_summary: research_area
   field_gtppl_roles: profile_type
   field_gtppl_title_custom: title
-  field_gtppl_title_custom_html: ''
+  field_gtppl_title_custom_html/value: ''
+  field_gtppl_title_custom_html/format:
+    plugin: default_value
+    default_value: gt_people_html
   field_gtppl_title_custom_short: ''
   field_gtppl_url_gscholar: url_gscholar
   field_gtppl_url_orcid: url_orcid

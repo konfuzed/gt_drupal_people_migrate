@@ -1,0 +1,51 @@
+uuid: 5cd9894c-66bd-4c19-8b60-c22edb447d7d
+id: gt_people_images
+label: GT People profile images
+migration_group: gt_people_migration_group
+migration_tags:
+  - JSON
+  - Profiles
+  - People
+  - Images
+source:
+  plugin: url
+  data_fetcher_plugin: file
+  data_parser_plugin: json
+  urls:
+    - public://import/gt_people/gt_people.data.json
+  item_selector: people
+  constants:
+    file_source_uri: public://sites/default/files/
+    file_dest_uri: public://gt_people/img_imports/
+  fields:
+    - name: id
+      label: 'ID'
+      selector: id
+    - name: photo
+      label: 'Image name'
+      selector: photo
+  ids:
+    id:
+      type: integer
+process:
+  file_source:
+    - plugin: concat
+      source:
+        - constants/file_source_uri
+        - photo
+  file_dest:
+    - plugin: concat
+      source:
+        - constants/file_dest_uri
+        - photo
+  uid:
+    plugin: default_value
+    default_value: 1
+  filename: photo
+  uri:
+    plugin: file_copy
+    source:
+      - '@file_source'
+      - '@file_dest'
+destination:
+  plugin: entity:file
