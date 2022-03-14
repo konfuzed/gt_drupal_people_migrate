@@ -18,6 +18,7 @@
   },
   "require": {
     "drupal/migrate": "^9.3",
+    "drupal/migrate_file": "^2.1",
     "drupal/migrate_plus": "^5.2",
     "drupal/migrate_tools": "^5.1"
   }

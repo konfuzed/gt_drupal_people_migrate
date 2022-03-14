@@ -26,8 +26,8 @@ source:
       selector: biography
     - name: bldg
       selector: bldg
-    - name: bldg_room
-      selector: bldg_room
+    - name: room
+      selector: room
     - name: bldg_url_map
       selector: bldg_url_map
     - name: education
@@ -52,8 +52,8 @@ source:
       selector: name_first
     - name: name_last
       selector: name_last
-    - name: phone
-      selector: phone
+    - name: telephone
+      selector: telephone
     - name: photo
       selector: photo
     - name: profile_type
@@ -169,7 +169,7 @@ process:
     delimiter: ' '
   field_gtppl_name_first: name_first
   field_gtppl_name_last: name_last
-  field_gtppl_phone: phone
+  field_gtppl_phone: telephone
   field_gtppl_publications/value: publications
   field_gtppl_publications/format:
     plugin: default_value
