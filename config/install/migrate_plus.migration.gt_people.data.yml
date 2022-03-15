@@ -104,6 +104,8 @@ source:
       selector: url_researchgate
     - name: url_scopus
       selector: url_scopus
+    - name: published_status
+      selector: published_status
   ids:
     id:
       type: integer
@@ -193,6 +195,7 @@ process:
   field_gtppl_url_orcid: url_orcid
   field_gtppl_url_pubmed: url_pubmed
   field_gtppl_url_researcherid: url_researcherid
+  status: published_status
 destination:
   plugin: entity:node
   default_bundle: gt_people
